@@ -143,7 +143,9 @@ namespace mook_PacketSniffer
             }
         }
 
-        public Protocol ProtocolType
+       
+
+        public Protocol ProtocolType // Fixed
         {
             get
             {
@@ -154,6 +156,47 @@ namespace mook_PacketSniffer
                 else if (byProtocol == 17)
                 {
                     return Protocol.UDP;
+                }
+                else if (byProtocol == 1)
+                {
+                    return Protocol.ICMP;
+                }
+                else if (byProtocol == 2)
+                {
+                    return Protocol.IGMP;
+                }
+                else if (byProtocol == 9)
+                {
+                    return Protocol.IGRP;
+                }
+                else if (byProtocol == 47)
+                {
+                    return Protocol.GRE;
+                }
+                else if (byProtocol == 50)
+                {
+                    return Protocol.ESP;
+                }
+                else if (byProtocol == 51)
+                {
+                    return Protocol.AH;
+                }
+                else if (byProtocol == 57)
+                {
+                    return Protocol.SKIP;
+
+                }
+                else if (byProtocol == 88)
+                {
+                    return Protocol.EIGRP;
+                }
+                else if (byProtocol == 89)
+                {
+                    return Protocol.OSPF;
+                }
+                else if (byProtocol == 115)
+                {
+                    return Protocol.L2TP;
                 }
                 else
                 {

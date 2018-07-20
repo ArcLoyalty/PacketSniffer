@@ -17,8 +17,18 @@ namespace mook_PacketSniffer
     {
         TCP = 6,
         UDP = 17,
-        Unknown = -1
-    };
+        Unknown = -1,
+        ICMP = 1,
+        IGMP = 2,
+        IGRP = 9,
+        GRE =47,
+        ESP = 50,
+        AH =51,
+        SKIP = 57,
+        EIGRP = 88,
+        OSPF = 89,
+        L2TP = 115
+    };  // Fixed
 
     public partial class Form1 : Form
     {
@@ -139,7 +149,7 @@ namespace mook_PacketSniffer
             string[] MergeUDP = null;
             string[] MergeAll = null;
 
-            switch (ipHeader.ProtocolType)
+            switch (ipHeader.ProtocolType) // fixed
             {
                 case Protocol.TCP:
                     TCPHeader tcpHeader = new TCPHeader(ipHeader.Data,
@@ -156,6 +166,36 @@ namespace mook_PacketSniffer
                     MergeAll = new string[MergeIPArr.Length + MergeUDP.Length];
                     Array.Copy(MergeIPArr, 0, MergeAll, 0, MergeIPArr.Length);
                     Array.Copy(MergeUDP, 0, MergeAll, MergeIPArr.Length, MergeUDP.Length);
+                    break;
+                case Protocol.ICMP:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.IGMP:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.IGRP:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.AH:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.EIGRP:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.ESP:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.GRE:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.L2TP:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.OSPF:
+                    MergeAll = MergeIPArr;
+                    break;
+                case Protocol.SKIP:
+                    MergeAll = MergeIPArr;
                     break;
                 case Protocol.Unknown:
                     MergeAll = MergeIPArr;
